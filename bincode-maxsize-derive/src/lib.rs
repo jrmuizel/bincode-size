@@ -7,7 +7,7 @@ fn bincode_max_size_derive(s: synstructure::Structure) -> proc_macro2::TokenStre
             // compute size of each variant by summing the sizes of its bindings
             let variant_size = variant.bindings().iter().map(|binding| {
                 let ty = &binding.ast().ty;
-                quote!(#ty :: bincode_max_size())
+                quote!(<#ty as bincode_maxsize::BincodeMaxSize>::bincode_max_size())
             }).fold(quote!(0), |acc, x| quote!(#acc + #x));
 
             quote!(max(#acc, #variant_size))
