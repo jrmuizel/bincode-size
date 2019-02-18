@@ -1,0 +1,11 @@
+[package]
+name = "bincode-maxsize"
+version = "0.1.0"
+authors = ["Jeff Muizelaar <jrmuizel@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+[dependencies.bincode-maxsize-derive]
+version = "*"
+path = "./bincode-maxsize-derive"
+

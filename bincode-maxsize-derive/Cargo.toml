@@ -1,0 +1,14 @@
+[package]
+authors = ["Jeff Muizelaar <jrmuizel@gmail.com>"]
+edition = "2018"
+name = "bincode-maxsize-derive"
+version = "0.1.0"
+
+[dependencies]
+proc-macro2 = "0.4.27"
+quote = "0.6.11"
+syn = "0.15.26"
+synstructure = "0.10.1"
+
+[lib]
+proc-macro = true
