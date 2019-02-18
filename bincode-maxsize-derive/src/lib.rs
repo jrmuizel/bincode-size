@@ -13,7 +13,11 @@ fn bincode_max_size_derive(s: synstructure::Structure) -> proc_macro2::TokenStre
             quote!(max(#acc, #variant_size))
         });
 
-    let desc_size = quote!(4);
+    let desc_size = match &s.variants()[..] {
+        // a single variant with no prefix is 'struct' so we don't need a discriminant
+        [v] if v.prefix.is_none() => { quote!(0) }
+        _ => { quote!(4) }
+    };
     let body = quote!(#desc_size + #variant_max);
 
     s.bound_impl(quote!(bincode_maxsize::BincodeMaxSize), quote!(
